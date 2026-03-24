@@ -1,5 +1,5 @@
-// Funktion f?r att h?mta produkter fr?n Fake Store API
-// Anv?nd async/await f?r att hantera asynkrona operationer
+// Funktion får att hämta produkter från Fake Store API
+// Använd async/await för att hantera asynkrona operationer
 async function fetchProducts()
 {
     try 
@@ -10,15 +10,15 @@ async function fetchProducts()
     } 
     catch (error)
     {
-        console.error('Fel vid h?mtning av produkter:', error);
+        console.error('Fel vid hämtning av produkter:', error);
     }
 }
 
-// Funktion f?r att visa produkter p? sidan
+// Funktion för att visa produkter på sidan
 function displayProducts(products)
 {
     const productList = document.querySelector('.product-list');
-    productList.innerHTML = ''; // T?m den befintliga listan
+    productList.innerHTML = ''; // Töm den befintliga listan
 
     products.forEach(product => {
         const productDiv = document.createElement('div');
@@ -35,5 +35,5 @@ function displayProducts(products)
     });
 }
 
-// K?r funktionen n?r sidan laddas
+// Kör funktionen när sidan laddas
 document.addEventListener('DOMContentLoaded', fetchProducts);
