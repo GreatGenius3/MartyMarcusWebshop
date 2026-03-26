@@ -17,21 +17,32 @@ async function fetchProducts()
 // Funktion för att visa produkter på sidan
 function displayProducts(products)
 {
+    // vi kollar först om sektionen finns på sidan innan vi försöker lägga in produkter
     const productList = document.querySelector('.product-list');
+    if (!productList)
+         return;
+
     productList.innerHTML = ''; // Töm den befintliga listan
+    productList.classList.add('row');
 
     products.forEach(product => {
+        const col = document.createElement('div');
+        col.className = 'col-12 col-sm-6 col-lg-4 mb-4';
+
         const productDiv = document.createElement('div');
-        productDiv.className = 'product';
+        productDiv.className = 'product card h-100 shadow-sm';
 
         productDiv.innerHTML = `
-            <img src="${product.image}" alt="${product.title}">
-            <h2>${product.title}</h2>
-            <p>$${product.price}</p>
-            <button>Add to Cart</button>
+            <img class="card-img-top product-image" src="${product.image}" alt="${product.title}">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">${product.title}</h5>
+                <p class="card-text text-success fw-bold">$${product.price}</p>
+                <button class="btn btn-primary mt-auto">Add to Cart</button>
+            </div>
         `;
 
-        productList.appendChild(productDiv);
+        col.appendChild(productDiv);
+        productList.appendChild(col);
     });
 }
 
