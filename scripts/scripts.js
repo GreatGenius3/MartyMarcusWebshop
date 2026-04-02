@@ -44,7 +44,87 @@ function displayProducts(products)
         col.appendChild(productDiv);
         productList.appendChild(col);
     });
+
+    //{I}=(I@I)={I}\\
+
+    //lyssnare 
+    //grenar av den för varje fält?
+    //huvud validering sektor metod med AO antal metoder innanför sig
+
+    //Validation.JS
+
+    //Hemsida.getform.addactionlistner(metod.)
+
 }
+
+document.querySelector("form").addEventListener("submit", function(e) {
+
+        e.preventDefault();
+        validateAll();
+
+    });
+
+    function validateAll(){
+       return(
+        validateName()&&
+        vaidateEmail()&&
+        validateMobil()&&
+        validateStreetAdress()&&
+        validatePostNumber()&&
+        validateLocality()
+       );
+    }
+
+        function validateName() {
+            const value = document.getElementById("name").value;
+            if(value.length < 2 || value.length > 50) {
+                alert("Namnet ska får enbart vara mellan 2 - 50 tecken.")
+                return false;
+            }
+            return true;
+        }
+        function vaidateEmail() {
+            const value = document.getElementById("email").value;
+            if(!value.includes("@") || value.length > 50){
+                alert("Eposten ska ha @ och får inte vara mer än 50 tecken.")
+                return false;
+            }
+            return true;
+        }
+        function validateMobil() {
+            const value = document.getElementById("mobile_number").value;
+            const regex = /^[0-9\+\s]+$/;
+            if(!regex.test(value) || value.length < 3 || value.length > 20){
+                alert("Telefonnumret får enbart innehålla siffror, mellanslag och ett plustecken.")
+                return false;
+            }
+            return true;
+        }
+        function validateStreetAdress() {
+            const value = document.getElementById("street_adress").value;
+            if(value.length < 2 || value.length > 20){
+                alert("Adressen får enbart vara mellan 2 till 50 tecken.")
+                return false;
+            }
+            return true;
+        }
+        function validatePostNumber() {
+            const value = document.getElementById("post_number").value;
+            const regex = /^[0-9]{5}$/
+            if(!regex.test(value)){
+                alert("Post nummer får max vara 5 siffror långa.")
+                return false;
+            }
+            return true;
+        }
+        function validateLocality() {
+            const value = document.getElementById("locality").value;
+            if(value.length < 2 || value.length > 20){
+                alert("Gatuadressen får max vara mellan 2 och 50 karaktärer")
+                return false;
+            }
+            return true;
+        }
 
 // Kör funktionen när sidan laddas
 document.addEventListener('DOMContentLoaded', fetchProducts);
