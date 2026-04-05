@@ -57,12 +57,15 @@ function displayProducts(products)
 
 }
 
+const form = document.querySelector("form");
+if(form){
 document.querySelector("form").addEventListener("submit", function(e) {
 
         e.preventDefault();
         validateAll();
 
     });
+}
 
     function validateAll(){
        return(
