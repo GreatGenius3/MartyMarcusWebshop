@@ -1,26 +1,22 @@
 // Funktion får att hämta produkter från Fake Store API
 // Använd async/await för att hantera asynkrona operationer
-async function fetchProducts()
-{
-    try 
-    {
+async function fetchProducts() {
+    try {
         const response = await fetch('https://fakestoreapi.com/products');
         const products = await response.json();
         displayProducts(products);
-    } 
-    catch (error)
-    {
+    }
+    catch (error) {
         console.error('Fel vid hämtning av produkter:', error);
     }
 }
 
 // Funktion för att visa produkter på sidan
-function displayProducts(products)
-{
+function displayProducts(products) {
     // vi kollar först om sektionen finns på sidan innan vi försöker lägga in produkter
     const productList = document.querySelector('.product-list');
     if (!productList)
-         return;
+        return;
 
     productList.innerHTML = ''; // Töm den befintliga listan
     productList.classList.add('row');
@@ -32,6 +28,8 @@ function displayProducts(products)
         const productDiv = document.createElement('div');
         productDiv.className = 'product card h-100 shadow-sm';
 
+        //Lyssnaren till knappen bör vara här.
+
         productDiv.innerHTML = `
             <img class="card-img-top product-image" src="${product.image}" alt="${product.title}">
             <div class="card-body d-flex flex-column">
@@ -40,6 +38,12 @@ function displayProducts(products)
                 <button class="btn btn-primary mt-auto">Add to Cart</button>
             </div>
         `;
+
+          const button = productDiv.querySelector("button");
+        button.addEventListener("click", function() {
+            localStorage.setItem("valdProdukt", JSON.stringify(product));
+            window.location.href = "contact.html";
+        });
 
         col.appendChild(productDiv);
         productList.appendChild(col);
@@ -58,76 +62,79 @@ function displayProducts(products)
 }
 
 const form = document.querySelector("form");
-if(form){
-document.querySelector("form").addEventListener("submit", function(e) {
+if (form) {
+    document.querySelector("form").addEventListener("submit", function (e) {
 
         e.preventDefault();
-        validateAll();
+        if (validateAll()) {
+            const produkt = JSON.parse(localStorage.getItem("valdProdukt"));
+            alert(`Tack för din beställning utav ${produkt.title} har tagits emot!`);
+        };//If stas där produkten hämtas ifall order formuläret fyllt i korrekt.
 
     });
 }
 
-    function validateAll(){
-       return(
-        validateName()&&
-        vaidateEmail()&&
-        validateMobil()&&
-        validateStreetAdress()&&
-        validatePostNumber()&&
+function validateAll() {
+    return (
+        validateName() &&
+        validateEmail() &&
+        validateMobil() &&
+        validateStreetAdress() &&
+        validatePostNumber() &&
         validateLocality()
-       );
-    }
+    );
+}
 
-        function validateName() {
-            const value = document.getElementById("name").value;
-            if(value.length < 2 || value.length > 50) {
-                alert("Namnet ska får enbart vara mellan 2 - 50 tecken.")
-                return false;
-            }
-            return true;
-        }
-        function vaidateEmail() {
-            const value = document.getElementById("email").value;
-            if(!value.includes("@") || value.length > 50){
-                alert("Eposten ska ha @ och får inte vara mer än 50 tecken.")
-                return false;
-            }
-            return true;
-        }
-        function validateMobil() {
-            const value = document.getElementById("mobile_number").value;
-            const regex = /^[0-9\+\s]+$/;
-            if(!regex.test(value) || value.length < 3 || value.length > 20){
-                alert("Telefonnumret får enbart innehålla siffror, mellanslag och ett plustecken.")
-                return false;
-            }
-            return true;
-        }
-        function validateStreetAdress() {
-            const value = document.getElementById("street_adress").value;
-            if(value.length < 2 || value.length > 20){
-                alert("Adressen får enbart vara mellan 2 till 50 tecken.")
-                return false;
-            }
-            return true;
-        }
-        function validatePostNumber() {
-            const value = document.getElementById("post_number").value;
-            const regex = /^[0-9]{5}$/
-            if(!regex.test(value)){
-                alert("Post nummer får max vara 5 siffror långa.")
-                return false;
-            }
-            return true;
-        }
-        function validateLocality() {
-            const value = document.getElementById("locality").value;
-            if(value.length < 2 || value.length > 20){
-                alert("Gatuadressen får max vara mellan 2 och 50 karaktärer")
-                return false;
-            }
-            return true;
-        }
+function validateName() {
+    const value = document.getElementById("name").value;
+    if (value.length < 2 || value.length > 50) {
+        alert("Namnet ska får enbart vara mellan 2 - 50 tecken.")
+        return false;
+    }
+    return true;
+}
+function validateEmail() {
+    const value = document.getElementById("email").value;
+    if (!value.includes("@") || value.length > 50) {
+        alert("Eposten ska ha @ och får inte vara mer än 50 tecken.")
+        return false;
+    }
+    return true;
+}
+function validateMobil() {
+    const value = document.getElementById("mobile_number").value;
+    const regex = /^[0-9\+\s]+$/;
+    if (!regex.test(value) || value.length < 3 || value.length > 20) {
+        alert("Telefonnumret får enbart innehålla siffror, mellanslag och ett plustecken.")
+        return false;
+    }
+    return true;
+}
+function validateStreetAdress() {
+    const value = document.getElementById("street_adress").value;
+    if (value.length < 2 || value.length > 20) {
+        alert("Adressen får enbart vara mellan 2 till 50 tecken.")
+        return false;
+    }
+    return true;
+}
+function validatePostNumber() {
+    const value = document.getElementById("post_number").value;
+    const regex = /^[0-9]{5}$/
+    if (!regex.test(value)) {
+        alert("Post nummer får max vara 5 siffror långa.")
+        return false;
+    }
+    return true;
+}
+function validateLocality() {
+    const value = document.getElementById("locality").value;
+    if (value.length < 2 || value.length > 20) {
+        alert("Gatuadressen får max vara mellan 2 och 50 karaktärer")
+        return false;
+    }
+    return true;
+}
 
 // Kör funktionen när sidan laddas
 document.addEventListener('DOMContentLoaded', fetchProducts);
