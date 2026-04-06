@@ -1,35 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Full Width Pics - Start Bootstrap Template</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="styles/styles.css" rel="stylesheet" />//bytte css till styles då de valideringen inte fungerade på min test.
-</head>
-
-<body>
-    <!-- Responsive navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Startsida</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="contact.html">Contact</a>
-                    </li>
-                </ul>
-=======
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -42,7 +12,7 @@
         <link href="styles/styles.css" rel="stylesheet" />
     </head>
     <body>
-        <!-- Responsive navbar-->
+        <!-- Navigation baren ovanpå sidan -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="index.html">Startsida</a>
@@ -54,56 +24,29 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page"href="contact.html">Contact</a></li>
                     </ul>
                 </div>
->>>>>>> bbe8c96f50ab6b7ce5c748bfc9487c523bd1ee77
             </div>
-        </div>
-    </nav>
-    <div class="order-form">
-        <form>
-            <!--"The turth stands glorified as the disorder of lies burns to the ground before him and her :D!"-->
-            <!--Namn-->
-            <div class="mb-3">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Your name">
+        </nav>
 
+        <!-- Header med bakgrundsbild-->
+        <header class="py-5 bg-image-full" style="background-image: url('images/landscape-abstract.jpg')">
+            <div class="text-center my-5">
+                <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
+                <h1 class="text-white fs-3 fw-bolder">MartyMarcus Webbshop</h1>
+                <p class="text-white-50 mb-0">Här hittar du vårat urval av produkter </p>
             </div>
-            <!--Epost-->
-            <div class="mb-3">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" placeholder="Your email">
-
+        </header>
+        <!-- Content section-->
+        <section class="py-5">
+            <div class="container my-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <h2>Kontakt</h2>
+                        <p class="lead">Stockholm.</p>
+                        <p class="mb-0">Telefon: 070-123 45 67</p>
+                        <p class="mb-0">Email: martymarcus@gmail.com</p>
+                    </div>
+                </div>
             </div>
-            <!--Telefon-->
-            <div class="mb-3">
-                <label for="mobile_number">Mobile_Number</label>
-                <input type="text" class="form-control" id="mobile_number" placeholder="your mobile number">
-
-            </div>
-            <!--Gatuadress-->
-            <div class="mb-3">
-                <label for="street_adress">Street_Adress</label>
-                <input type="text" class="form-control" id="street_adress" placeholder="your street adress">
-
-            </div>
-            <!--Postnr-->
-            <div class="mb-3">
-                <label for="post_number">Post_Number</label>
-                <input type="text" class="form-control" id="post_number" placeholder="your post number">
-
-            </div>
-            <!--Ort-->
-            <div class="mb-3">
-                <label for="locality">Locality</label>
-                <input type="text" class="form-control" id="locality" placeholder="your locality">
-
-            </div>
-
-            <button type="submit">Order</button>
-        </form>
-    </div>
-    <script src="scripts/scripts.js"></script>
-</body>
-<!--{I}=(I@I)={I}-->
-<!--Klass för formuläret??? koppla mot JC? haleljuca UWU ;D-+-->
-
-</html>
+        </section>
+    </body>
+   </html>

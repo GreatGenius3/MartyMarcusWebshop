@@ -42,7 +42,7 @@ function displayProducts(products) {
           const button = productDiv.querySelector("button");
         button.addEventListener("click", function() {
             localStorage.setItem("valdProdukt", JSON.stringify(product));
-            window.location.href = "contact.html";
+            window.location.href = "order.html";
         });
 
         col.appendChild(productDiv);
