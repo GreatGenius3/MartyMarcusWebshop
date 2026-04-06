@@ -1,5 +1,5 @@
-// Funktion får att hämta produkter från Fake Store API
-// Använd async/await för att hantera asynkrona operationer
+// Funktion fأ¥r att hأ¤mta produkter frأ¥n Fake Store API
+// Anvأ¤nd async/await fأ¶r att hantera asynkrona operationer
 async function fetchProducts() {
     try {
         const response = await fetch('https://fakestoreapi.com/products');
@@ -7,18 +7,19 @@ async function fetchProducts() {
         displayProducts(products);
     }
     catch (error) {
-        console.error('Fel vid hämtning av produkter:', error);
+        console.error('Fel vid hأ¤mtning av produkter:', error);
     }
 }
 
-// Funktion för att visa produkter på sidan
-function displayProducts(products) {
-    // vi kollar först om sektionen finns på sidan innan vi försöker lägga in produkter
+// Funktion fأ¶r att visa produkter pأ¥ sidan
+function displayProducts(products) 
+{
+    // vi kollar fأ¶rst om sektionen finns pأ¥ sidan innan vi fأ¶rsأ¶ker lأ¤gga in produkter
     const productList = document.querySelector('.product-list');
     if (!productList)
         return;
 
-    productList.innerHTML = ''; // Töm den befintliga listan
+    productList.innerHTML = ''; // Tأ¶m den befintliga listan
     productList.classList.add('row');
 
     products.forEach(product => {
@@ -28,37 +29,49 @@ function displayProducts(products) {
         const productDiv = document.createElement('div');
         productDiv.className = 'product card h-100 shadow-sm';
 
-        //Lyssnaren till knappen bör vara här.
+        //Lyssnaren till knappen bأ¶r vara hأ¤r.
 
         productDiv.innerHTML = `
             <img class="card-img-top product-image" src="${product.image}" alt="${product.title}">
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title">${product.title}</h5>
                 <p class="card-text text-success fw-bold">$${product.price}</p>
-                <button class="btn btn-primary mt-auto">Add to Cart</button>
+                <button class="btn btn-primary mt-auto" onclick="addToCart(${product.id}, '${product.title}', ${product.price}, '${product.thumbnail}')">Lägg till vara</button>
             </div>
         `;
 
-          const button = productDiv.querySelector("button");
-        button.addEventListener("click", function() {
-            localStorage.setItem("valdProdukt", JSON.stringify(product));
-            window.location.href = "order.html";
-        });
-
-        col.appendChild(productDiv);
+        // Fluttade detta till en egen funktionsom heter addToCart nedan
+        //   const button = productDiv.querySelector("button");
+        /// button.addEventListener("click", function() {
+         //    localStorage.setItem("valdProdukt", JSON.stringify(product));
+         //   window.location.href = "order.html";
+         col.appendChild(productDiv);
         productList.appendChild(col);
     });
+}
+    
 
     //{I}=(I@I)={I}\\
 
     //lyssnare 
-    //grenar av den för varje fält?
-    //huvud validering sektor metod med AO antal metoder innanför sig
+    //grenar av den fأ¶r varje fأ¤lt?
+    //huvud validering sektor metod med AO antal metoder innanfأ¶r sig
 
     //Validation.JS
 
     //Hemsida.getform.addactionlistner(metod.)
 
+
+// Funktion för att ta vald produkt i varukorg och skicka till order-sidan
+function addToCart(id, title, price, thumbnail)
+{
+    // Spara produktdata i sessionStorage
+    const product = { id, title, price, thumbnail };
+    // sessionStorage.setItem('selectedProduct', JSON.stringify(product));
+    localStorage.setItem("valdProdukt", JSON.stringify(product));
+    
+    // Skicka anvأ¤ndaren till order.html
+    window.location.href = 'order.html';
 }
 
 const form = document.querySelector("form");
@@ -69,7 +82,7 @@ if (form) {
         if (validateAll()) {
             const produkt = JSON.parse(localStorage.getItem("valdProdukt"));
             alert(`Tack för din beställning utav ${produkt.title} har tagits emot!`);
-        };//If stas där produkten hämtas ifall order formuläret fyllt i korrekt.
+        };//If stas dأ¤r produkten hأ¤mtas ifall order formulأ¤ret fyllt i korrekt.
 
     });
 }
@@ -88,7 +101,7 @@ function validateAll() {
 function validateName() {
     const value = document.getElementById("name").value;
     if (value.length < 2 || value.length > 50) {
-        alert("Namnet ska får enbart vara mellan 2 - 50 tecken.")
+        alert("Namnet ska fأ¥r enbart vara mellan 2 - 50 tecken.")
         return false;
     }
     return true;
@@ -96,7 +109,7 @@ function validateName() {
 function validateEmail() {
     const value = document.getElementById("email").value;
     if (!value.includes("@") || value.length > 50) {
-        alert("Eposten ska ha @ och får inte vara mer än 50 tecken.")
+        alert("Eposten ska ha @ och fأ¥r inte vara mer أ¤n 50 tecken.")
         return false;
     }
     return true;
@@ -105,7 +118,7 @@ function validateMobil() {
     const value = document.getElementById("mobile_number").value;
     const regex = /^[0-9\+\s]+$/;
     if (!regex.test(value) || value.length < 3 || value.length > 20) {
-        alert("Telefonnumret får enbart innehålla siffror, mellanslag och ett plustecken.")
+        alert("Telefonnumret fأ¥r enbart innehأ¥lla siffror, mellanslag och ett plustecken.")
         return false;
     }
     return true;
@@ -113,7 +126,7 @@ function validateMobil() {
 function validateStreetAdress() {
     const value = document.getElementById("street_adress").value;
     if (value.length < 2 || value.length > 20) {
-        alert("Adressen får enbart vara mellan 2 till 50 tecken.")
+        alert("Adressen fأ¥r enbart vara mellan 2 till 50 tecken.")
         return false;
     }
     return true;
@@ -122,7 +135,7 @@ function validatePostNumber() {
     const value = document.getElementById("post_number").value;
     const regex = /^[0-9]{5}$/
     if (!regex.test(value)) {
-        alert("Post nummer får max vara 5 siffror långa.")
+        alert("Post nummer fأ¥r max vara 5 siffror lأ¥nga.")
         return false;
     }
     return true;
@@ -130,11 +143,11 @@ function validatePostNumber() {
 function validateLocality() {
     const value = document.getElementById("locality").value;
     if (value.length < 2 || value.length > 20) {
-        alert("Gatuadressen får max vara mellan 2 och 50 karaktärer")
+        alert("Gatuadressen fأ¥r max vara mellan 2 och 50 karaktأ¤rer")
         return false;
     }
     return true;
 }
 
-// Kör funktionen när sidan laddas
+// Kأ¶r funktionen nأ¤r sidan laddas
 document.addEventListener('DOMContentLoaded', fetchProducts);
