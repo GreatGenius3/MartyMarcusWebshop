@@ -82,6 +82,12 @@ if (form) {
         if (validateAll()) {
             const produkt = JSON.parse(localStorage.getItem("valdProdukt"));
             alert(`Tack för din beställning utav ${produkt.title} har tagits emot!`);
+
+            // Vi återvänder till index.html och rensar sessionStorage så att produkten inte
+            // finns kvar i varukorgen
+            sessionStorage.removeItem('selectedProduct');
+            window.location.href = 'index.html';
+
         };//If stas dأ¤r produkten hأ¤mtas ifall order formulأ¤ret fyllt i korrekt.
 
     });
