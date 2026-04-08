@@ -107,7 +107,7 @@ function validateAll() {
 function validateName() {
     const value = document.getElementById("name").value;
     if (value.length < 2 || value.length > 50) {
-        alert("Namnet ska fأ¥r enbart vara mellan 2 - 50 tecken.")
+        alert("Namnet ska får enbart vara mellan 2 - 50 tecken.")
         return false;
     }
     return true;
@@ -115,7 +115,7 @@ function validateName() {
 function validateEmail() {
     const value = document.getElementById("email").value;
     if (!value.includes("@") || value.length > 50) {
-        alert("Eposten ska ha @ och fأ¥r inte vara mer أ¤n 50 tecken.")
+        alert("Eposten ska ha @ och får inte vara mer än 50 tecken.")
         return false;
     }
     return true;
@@ -124,7 +124,7 @@ function validateMobil() {
     const value = document.getElementById("mobile_number").value;
     const regex = /^[0-9\+\s]+$/;
     if (!regex.test(value) || value.length < 3 || value.length > 20) {
-        alert("Telefonnumret fأ¥r enbart innehأ¥lla siffror, mellanslag och ett plustecken.")
+        alert("Telefonnumret får enbart innehålla siffror, mellanslag och ett plustecken.")
         return false;
     }
     return true;
@@ -132,7 +132,7 @@ function validateMobil() {
 function validateStreetAdress() {
     const value = document.getElementById("street_adress").value;
     if (value.length < 2 || value.length > 20) {
-        alert("Adressen fأ¥r enbart vara mellan 2 till 50 tecken.")
+        alert("Adressen fأår enbart vara mellan 2 till 50 tecken.")
         return false;
     }
     return true;
@@ -141,7 +141,7 @@ function validatePostNumber() {
     const value = document.getElementById("post_number").value;
     const regex = /^[0-9]{5}$/
     if (!regex.test(value)) {
-        alert("Post nummer fأ¥r max vara 5 siffror lأ¥nga.")
+        alert("Post nummer fأår max vara 5 siffror lأ¥nga.")
         return false;
     }
     return true;
@@ -149,7 +149,7 @@ function validatePostNumber() {
 function validateLocality() {
     const value = document.getElementById("locality").value;
     if (value.length < 2 || value.length > 20) {
-        alert("Gatuadressen fأ¥r max vara mellan 2 och 50 karaktأ¤rer")
+        alert("Gatuadressen får max vara mellan 2 och 50 karaktأ¤rer")
         return false;
     }
     return true;
