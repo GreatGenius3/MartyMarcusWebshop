@@ -1,5 +1,5 @@
-// Funktion fأ¥r att hأ¤mta produkter frأ¥n Fake Store API
-// Anvأ¤nd async/await fأ¶r att hantera asynkrona operationer
+// Funktion för att hämta produkter från Fake Store API
+// Använd async/await för att hantera asynkrona operationer
 async function fetchProducts() {
     try {
         const response = await fetch('https://fakestoreapi.com/products');
@@ -29,7 +29,7 @@ function displayProducts(products)
         const productDiv = document.createElement('div');
         productDiv.className = 'product card h-100 shadow-sm';
 
-        //Lyssnaren till knappen bأ¶r vara hأ¤r.
+        //Lyssnaren till knappen b bör vara här.
 
         productDiv.innerHTML = `
             <img class="card-img-top product-image" src="${product.image}" alt="${product.title}">
@@ -54,8 +54,8 @@ function displayProducts(products)
     //{I}=(I@I)={I}\\
 
     //lyssnare 
-    //grenar av den fأ¶r varje fأ¤lt?
-    //huvud validering sektor metod med AO antal metoder innanfأ¶r sig
+    //grenar av den för varje fält?
+    //huvud validering sektor metod med AO antal metoder innanför sig
 
     //Validation.JS
 
@@ -88,7 +88,7 @@ if (form) {
             sessionStorage.removeItem('valdProdukt');
             window.location.href = 'index.html';
 
-        };//If stas dأ¤r produkten hأ¤mtas ifall order formulأ¤ret fyllt i korrekt.
+        };//If stas då produkten hämtas ifall order formuläret fyllt i korrekt.
 
     });
 }
