@@ -7,14 +7,14 @@ async function fetchProducts() {
         displayProducts(products);
     }
     catch (error) {
-        console.error('Fel vid hأ¤mtning av produkter:', error);
+        console.error('Fel vid hämtning av produkter:', error);
     }
 }
 
-// Funktion fأ¶r att visa produkter pأ¥ sidan
+// Funktion för att visa produkter på sidan
 function displayProducts(products) 
 {
-    // vi kollar fأ¶rst om sektionen finns pأ¥ sidan innan vi fأ¶rsأ¶ker lأ¤gga in produkter
+    // vi kollar först om sektionen finns på sidan innan vi försöker lägga in produkter
     const productList = document.querySelector('.product-list');
     if (!productList)
         return;
@@ -36,7 +36,7 @@ function displayProducts(products)
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title">${product.title}</h5>
                 <p class="card-text text-success fw-bold">$${product.price}</p>
-                <button class="btn btn-primary mt-auto" onclick="addToCart(${product.id}, '${product.title}', ${product.price}, '${product.thumbnail}')">Lägg till vara</button>
+                <button class="btn btn-primary mt-auto" onclick="addToCart(${product.id}, '${product.title}', ${product.price}, '${product.image}')">Lägg till vara</button>
             </div>
         `;
 
@@ -63,12 +63,12 @@ function displayProducts(products)
 
 
 // Funktion för att ta vald produkt i varukorg och skicka till order-sidan
-function addToCart(id, title, price, thumbnail)
+function addToCart(id, title, price, image)
 {
     // Spara produktdata i sessionStorage
-    const product = { id, title, price, thumbnail };
+    const product = { id, title, price, image };
     // sessionStorage.setItem('selectedProduct', JSON.stringify(product));
-    localStorage.setItem("valdProdukt", JSON.stringify(product));
+    sessionStorage.setItem("valdProdukt", JSON.stringify(product));
     
     // Skicka anvأ¤ndaren till order.html
     window.location.href = 'order.html';
@@ -155,5 +155,5 @@ function validateLocality() {
     return true;
 }
 
-// Kأ¶r funktionen nأ¤r sidan laddas
+// Kör funktionen när sidan laddas
 document.addEventListener('DOMContentLoaded', fetchProducts);
